@@ -6,7 +6,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @book = Book.new
-    if create_at = params[:created_at] == ""
+  end
+  
+  def search
+    @user = User.find(params[:user_id])
+    @books = @user.books
+    @book = Book.new
+    if params[:created_at] == ""
       @search_book = "日付を選択してください"
     else
       create_at = params[:created_at]
